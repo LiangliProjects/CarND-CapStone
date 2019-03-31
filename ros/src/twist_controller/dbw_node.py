@@ -80,7 +80,7 @@ class DBWNode(object):
         while not rospy.is_shutdown():
             if not None in (self.current_vel, self.linear_vel, self.angular_vel):
                 # call control
-                self.throttle, self.steering, self.brake = self.controller.control(self.dbw_enabled, self.current_vel, self.linear_vel, self.angular_vel)
+                self.throttle, self.brake, self.steering = self.controller.control(self.dbw_enabled, self.current_vel, self.linear_vel, self.angular_vel)
             # only publish when dbw is enabled
             if self.dbw_enabled:
                 self.publish(self.throttle, self.brake, self.steering)
